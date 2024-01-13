@@ -2,32 +2,28 @@ name: Send Email on Dispatch
 
 on:
   workflow_dispatch:
-      
+
 jobs:
   send-email:
     runs-on: ubuntu-latest
 
-    inputs:
-      required:
-        - EMAIL_RECEIVER
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
 
-    - name: Install Dependencies
-      run: |
-        pip install secure-smtplib
+      - name: Install Dependencies
+        run: |
+          pip install secure-smtplib
 
-    - name: Run Email Script
-      run: |
-        python email_script.py
-      env:
-        EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        EMAIL_RECEIVER: ${{ secrets.EMAIL_SENDER }}
+      - name: Run Email Script
+        run: |
+          python email_script.py
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECEIVER: ${{ secrets.EMAIL_SENDER }}
