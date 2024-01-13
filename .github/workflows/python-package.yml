@@ -2,12 +2,7 @@ name: Send Email on Dispatch
 
 on:
   workflow_dispatch:
-    inputs:
-      EMAIL_RECEIVER:
-        description: Enter receiver email 
-        required: true
-        default: ${{ secrets.EMAIL_SENDER }}
-
+      
 jobs:
   send-email:
     runs-on: ubuntu-latest
@@ -35,4 +30,4 @@ jobs:
       env:
         EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        EMAIL_RECEIVER: ${{ inputs.EMAIL_RECEIVER }}
+        EMAIL_RECEIVER: ${{ secrets.EMAIL_SENDER }}
