@@ -22,7 +22,7 @@ jobs:
 
       - name: Run Email Script
         run: |
-          python email_script.py
+          python send_email.py
         env:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
